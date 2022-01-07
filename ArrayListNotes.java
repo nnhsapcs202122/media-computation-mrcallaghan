@@ -24,6 +24,9 @@ public class ArrayListNotes
         ArrayList<Integer> myList;
         myList = createRandomIntegerList(10,20);
         System.out.println(myList);
+        removeEvensAlt(myList);
+        System.out.println(myList);
+        System.out.println(sumList(myList));
     }
     
     /**
@@ -66,19 +69,50 @@ public class ArrayListNotes
      */
     public static void removeEvens(ArrayList<Integer> list)
     {
+        /*
+         * The size method returns the number of elements in the specified list.
+         */
+        //int s = list.size();
+        for(int i = 0; i < list.size(); i++)
+        {
+            /*
+             * The get method returns the value of the element at the specified index.
+             */
+            int value = list.get(i);
+            if (value % 2 == 0)
+            {
+                /*
+                 * The remove method deletes the element at the specified index from the list.
+                 *      All subsequent elelments are "shifted left".
+                 */
+                list.remove(i);
+                i--;
+            }
+        }
         
     }
     
     public static void removeEvensAlt(ArrayList<Integer> list)
     {
-        
+        for(int i = list.size() - 1; i >= 0; i--)
+        {
+            if(list.get(i) % 2 == 0)
+            {
+                list.remove(i);
+            }
+        }
     }
     
     public static int sumList(ArrayList<Integer> list)
     {
         int sum = 0;
-        
-        
+        /*
+         * Enhanced for loops support iterating through ArrayLists
+         */
+        for(int value: list)
+        {
+            sum += value;
+        }
         
         return sum;
     }
